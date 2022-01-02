@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<VBox prefHeight="400.0" prefWidth="800.0" stylesheets="@controller.css" xmlns="http://javafx.com/javafx/8.0.112"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.ServerController">
+    <HBox>
+        <TextField fx:id="port" />
+        <Button mnemonicParsing="false" onAction="#onSaveSettings" prefHeight="26.0" prefWidth="94.0" text="Save settings" textAlignment="CENTER">
+            <font>
+                <Font name="Liberation Sans Bold" size="12.0" />
+            </font>
+        </Button>
+        <Separator prefWidth="200.0" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <HBox VBox.vgrow="ALWAYS">
+        <WebView fx:id="browser" HBox.hgrow="ALWAYS" />
+        <ListView fx:id="listView" editable="false" />
+    </HBox>
+
+    <HBox>
+        <TextArea fx:id="inputArea" onKeyPressed="#onEnterSendMessage" prefHeight="18.0" HBox.hgrow="ALWAYS">
+            <font>
+                <Font name="Liberation Sans" size="13.0" />
+            </font>
+        </TextArea>
+        <Button onAction="#onSendMessageToAll" prefHeight="35.0" prefWidth="128.0" text="Send" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="Liberation Sans Bold" size="12.0" />
+            </font>
+        </Button>
+    </HBox>
+
+</VBox>

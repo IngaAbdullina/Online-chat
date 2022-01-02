@@ -1,0 +1,7 @@
+.text-area  .content {
+    -fx-background-color: linear-gradient(to right, rgb(142, 245, 245) 25%,rgb(105, 245, 152) 75%);
+}
+
+.text-area   {
+    -fx-font-size: 12px;
+}

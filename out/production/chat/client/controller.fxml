@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="800.0" stylesheets="@controller.css" xmlns="http://javafx.com/javafx/8.0.112"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientController" >
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onButtonExit" text="Exit"/>
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Chat">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onSaveHistory" text="Save history to file"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onShowUsersOnline" text="Get online users' list"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onClearChatWindow" text="Clear windows's chat"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onReconnectToServer" text="Reconnect to the server"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onButtonChangeName" text="Change name"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onRequestGetHistory" text="Get history"/>
+                    <SeparatorMenuItem mnemonicParsing="false"/>
+                    <MenuItem mnemonicParsing="false" onAction="#onButtonSettings" text="Settings"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <HBox fx:id="loginPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER" spacing="15.0">
+            <TextField fx:id="loginInput" promptText="login"  text="inga"/>
+            <PasswordField fx:id="passwordInput" onAction="#onConnect" promptText="password" text="qwerty"/>
+            <Button fx:id="buttonConnect" onAction="#onConnect" text="Connect"/>
+            <Button onAction="#onShowRegisterPanel" text="Registration"/>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="registerPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER">
+            <TextField fx:id="newLoginInput" promptText="new login"/>
+            <PasswordField fx:id="newPassInput" promptText="new password"/>
+            <TextField fx:id="newUserInput" promptText="new nick"/>
+            <Button onAction="#onRegistration" text="Registration"/>
+            <Button fx:id="buttonBack" onAction="#onShowLoginPanel" text="Back"/>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="settingsPanel" alignment="CENTER" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER">
+            <HBox>
+                <Label text="IP-adress"/>
+                <TextField fx:id="settingsIpAddress" text=""/>
+            </HBox>
+            <HBox>
+                <Label text="Port"/>
+                <TextField fx:id="settingsPort" text=""/>
+            </HBox>
+            <HBox>
+                <Button fx:id="buttonSaveSettings" onAction="#onSaveSettings" text="Save"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="chatPanel" VBox.vgrow="ALWAYS">
+        <VBox HBox.hgrow="ALWAYS">
+            <HBox VBox.vgrow="ALWAYS">
+                <VBox HBox.hgrow="ALWAYS">
+                    <WebView fx:id="browser" VBox.vgrow="ALWAYS"/>
+                    <HBox>
+                        <Button fx:id="buttonMakeBold" onAction="#onMakeTextBold" text="B" textAlignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="buttonMakeItalic" mnemonicParsing="false" onAction="#onMakeTextItalic" text="I"
+                                textAlignment="CENTER">
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="buttonMakeUnderline" onAction="#onMakeTextUnderline" text="U"
+                                textAlignment="CENTER" underline="true">
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Button>
+                        <ColorPicker fx:id="colorPicker" onAction="#onMakeTextColor" prefHeight="29.0"
+                                     prefWidth="118.0"/>
+                    </HBox>
+                </VBox>
+                <VBox>
+                    <HBox>
+                        <Button onAction="#onSelectAll" text="☑" textAlignment="CENTER"/>
+                        <Button onAction="#onDeselectAll" text="☐" textAlignment="CENTER"/>
+                    </HBox>
+                    <ListView fx:id="listView"/>
+                </VBox>
+            </HBox>
+            <VBox HBox.hgrow="ALWAYS">
+                <HBox VBox.vgrow="ALWAYS">
+                    <TextArea fx:id="inputArea" onKeyPressed="#onEnterSendMessage" promptText="enter the message text"
+                              wrapText="true" HBox.hgrow="ALWAYS">
+                    </TextArea>
+                    <Button fx:id="buttonSendMessage" onAction="#onButtonSendMessageClick" prefHeight="35.0"
+                            prefWidth="124.0" text="Send" textAlignment="CENTER" wrapText="true">
+                        <font>
+                            <Font name="Liberation Sans Bold" size="12.0"/>
+                        </font>
+                    </Button>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+</VBox>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/*
+webView
+*/
+body {
+    font-family: Roboto, Verdana, Arial, sans-serif;
+    background-color: azure;
+}
+p {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    text-shadow: -1px -1px 1px rgba(255,255,255, 0.3),
+    1px 1px 1px rgba(255,255,255, 0.3),
+    1px 1px 1px rgba(0,0,0, 0.01);
+
+}
